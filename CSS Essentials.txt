@@ -1,0 +1,91 @@
+1. The CSS box model is essentially a box that wraps around every HTML element. 
+   It consists of: margins, borders, padding, and the actual content.
+2. Outline differs from borders! Unlike border, the outline is drawn outside 
+   the element's border, and may overlap other content. Also, the outline is 
+   NOT a part of the element's dimensions; the element's total width and height 
+   is not affected by the width of the outline.
+3. Static positioned elements are not affected by the top, bottom, left, and right properties.
+   An element with position: static; is not positioned in any special way; it is always 
+   positioned according to the normal flow of the page.
+4. An element with position: relative; is positioned relative to its normal position.
+   Setting the top, right, bottom, and left properties of a relatively-positioned 
+   element will cause it to be adjusted away from its normal position.
+5. An element with position: fixed; is positioned relative to the viewport, 
+   which means it always stays in the same place even if the page is scrolled. 
+   The top, right, bottom, and left properties are used to position the element.
+6. An element with position: absolute; is positioned relative to the nearest positioned 
+   ancestor (instead of positioned relative to the viewport, like fixed).
+7. An element with position: sticky; is positioned based on the user's scroll position.
+
+8. An element with greater stack order is always in front of an element with a lower stack order.
+   If two positioned elements overlap without a z-index specified, the element positioned last 
+   in the HTML code will be shown on top.
+9. The CSS float property specifies how an element should float.
+
+10. The CSS clear property specifies what elements can float beside the cleared element and on which side.
+
+11. Compared to display: inline, the major difference is that display: inline-block allows to set a width 
+    and height on the element.
+    Also, with display: inline-block, the top and bottom margins/paddings are respected, 
+    but with display: inline they are not.
+    Compared to display: block, the major difference is that display: inline-block does 
+    not add a line-break after the element, so the element can sit next to other elements.
+12. There are four different combinators in CSS:
+	descendant selector (space)
+	child selector (>)
+	adjacent sibling selector (+)
+	general sibling selector (~)
+13. A pseudo-class is used to define a special state of an element.
+    Types: hover, active, first-child, lang, focus 
+	selector:pseudo-class {
+  		property:value;
+	}
+14. A CSS pseudo-element is used to style specified parts of an element.
+    Types: first-line, first-letter(can only be applied to block-level elements), before, after, selection
+    For example, it can be used to:
+    Style the first letter, or line, of an element
+    Insert content before, or after, the content of an element
+	selector::pseudo-element {
+  		property:value;
+	}
+15. The double colon notation - ::first-line versus :first-line
+    -The double colon replaced the single-colon notation for pseudo-elements in CSS3. 
+     This was an attempt from W3C to distinguish between pseudo-classes and pseudo-elements.
+    -The single-colon syntax was used for both pseudo-classes and pseudo-elements in CSS2 and CSS1.
+    -For backward compatibility, the single-colon syntax is acceptable for CSS2 and CSS1 pseudo-elements.
+16. The [attribute|="value"] selector is used to select elements with the specified attribute starting with the specified value.
+	[class|="top"] {
+  		background: yellow;
+	}
+17. Specificity:
+    -If there are two or more conflicting CSS rules that point to the same element, 
+     the browser follows some rules to determine which one is most specific and therefore wins out.
+    -Think of specificity as a score/rank that determines which style declarations are 
+     ultimately applied to an element.
+    -The universal selector (*) has low specificity, while ID selectors are highly specific! 
+    -There are four categories which define the specificity level of a selector:
+     -Inline styles - An inline style is attached directly to the element to be styled. Example: <h1 style="color: #ffffff;">.
+     -IDs - An ID is a unique identifier for the page elements, such as #navbar.
+     -Classes, attributes and pseudo-classes - This category includes .classes, [attributes] and pseudo-classes such as :hover, :focus etc.
+     -Elements and pseudo-elements - This category includes element names and pseudo-elements, such as h1, div, :before and :after.
+18. CSS Rounded Corners: 
+    With the CSS border-radius property, you can give any element "rounded corners".
+19. CSS Border Images:
+    With the CSS border-image property, you can set an image to be used as the border around an element.
+20. CSS Multiple Backgrounds:
+    CSS allows you to add multiple background images for an element, through the background-image property.
+    The different background images are separated by commas, and the images are stacked on top of each other, 
+    where the first image is closest to the viewer.
+21. CSS gradients let you display smooth transitions between two or more specified colors.
+    CSS defines two types of gradients:
+    -Linear Gradients (goes down/up/left/right/diagonally)
+    -Radial Gradients (defined by their center)
+22. CSS Shadow Effects:
+    With CSS you can add shadow to text and to elements.
+    Two types: text-shadow, box-shadow
+23. CSS Transitions:
+    CSS transitions allows you to change property values smoothly (from one value to another), over a given duration.
+24. CSS Animations:
+    CSS animations allows animation of most HTML elements without using JavaScript or Flash!
+25. CSS Box Sizing:
+    The CSS box-sizing property allows us to include the padding and border in an element's total width and height.

@@ -1,0 +1,42 @@
+1. Return unique array by removing repeatetive elements:
+	var uniq = currencyUniqueArray.reduce(function (a, b) {
+                    if (a.indexOf(b) < 0) a.push(b);
+                    return a;
+                }, []); 
+
+2. Set does not store duplicate values:
+	var arr = [1,4,2,3,7,5,4,3,9];
+	console.log([...new Set(arr)]); //does not store duplicates
+
+	var sortedArr = arr.sort();
+		for(var i = 0; i < sortedArr.length-1; i++) {
+			  if(sortedArr[i] === sortedArr[i+1]) {
+				    sortedArr.splice(i,1)
+			  }
+		}
+	//console.log(sortedArr);
+
+3. Fibonacci series:
+//Fibonacci Series
+//0,1,1,2,3,5,8,13,21..
+//Logic
+//1st num -> 0 | 2nd Num -> 1 | 3rd num -> 1st + 2nd | 
+//1st num -> 2nd num | 2nd num is the sum calcuated | repeat
+
+	function fibonacci(n) {
+	  var first = 0;
+	  var second = 1;
+	  var sum = 0;
+ 	  var fiboArr = [];
+	  fiboArr.push(first);
+	  fiboArr.push(second);
+	  for(var i = 0; i < n-2; i++) {
+	    sum = first + second;
+	    fiboArr.push(sum);
+	    first = second;
+	    second = sum;
+	  }
+	  return fiboArr;
+}
+
+console.log(fibonacci(10));

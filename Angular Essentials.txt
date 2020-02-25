@@ -1,0 +1,85 @@
+1. Angular Routing:
+   Routing basically means navigating between pages.
+   Steps:
+   1. import { RouterModule} from '@angular/router'; - app.module.ts
+   2. RouterModule.forRoot([{}]), or RouterModule.forChild([{}]), - app.module.ts
+   3. {path: 'new-cmp',component: NewCmpComponent} - Inside array of step 2 in app.module.ts
+   4. <a routerLink = "new-cmp">New component</a> - parent-components.html OR this.router.navigate(["/new-cmp"]) - parent-components.ts
+   5. <router-outlet></router-outlet>
+
+2. Lazy Loading:
+   Lazy loading is a technique in Angular that allows you to load JavaScript components asynchronously 
+   when a specific route is activated.
+   Steps:
+   1. Create a new App with Routing. 
+	-(ng new lazyDemo --routing)
+   2. Now add a link to the lazy url in the app component. 
+	-(<button routerLink="/lazy/load-me"></button>) -> app.component.html
+	-(<router-outlet></router-outlet>) -> app.component.html
+   3. Generate the “Lazy” Module that will be lazy loaded, along with a component.
+	-(ng g module lazy --flat)
+	-(ng g component lazy-parent --module lazy)
+   4. Inside the lazy module we need to import the RouterModule. Two things to notice here:
+	-The route path to the component is path: 'load-me', even though it will actually be activated on lazy/load-me. 
+	-This is a child route.
+	-The RouterModule calls forChild(routes).
+		- RouterModule.forChild({ path: 'load-me', component: LazyParentComponent }) -> lazy.module.ts
+   5. Point the App Router to the Lazy Module
+	-imports: [RouterModule.forRoot({ path: 'lazy', loadChildren: './lazy.module#LazyModule'})], -> app.module.ts
+
+3. Bootstrapping Angular Application:
+   Official Angular documentation states that to bootstrap an application 
+   you have to put the following in the main.ts file:
+	-platformBrowserDynamic().bootstrapModule(AppModule);
+   The first part of the statement platformBrowserDynamic() creates a platform:
+	the entry point for Angular on a web page. Each page has exactly one platform, 
+	and services (such as reflection) which are common to every Angular application 
+	running on the page are bound in its scope.
+   When the application is being created Angular checks the bootstrap property of the 
+   module used to bootstrap the application (AppModule).
+   The above process implies that you know what component you want to bootstrap the application with. 
+   But imagine a situation when the component to bootstrap the application is defined by the server during runtime. 
+   How can you bootstrap the application later when you get this information?
+	-NgDoBootstrap -> used to manually bootstrap a component
+
+4. Lifecycle Methods:
+   In Angular, every component has a life-cycle, a number of different stages it goes through from initializing to destroying.
+   There are 8 different stages in the component lifecycle. 
+   Every stage is called  life cycle hook events.
+   After creating a component/directive by calling its constructor, 
+   Angular calls the lifecycle hook methods in the following sequence at specific moments:
+	-ngOnChanges() - Called before ngOnInit() and whenever one or more data-bound input properties change.
+	-ngOnInit() - Initialize the directive/component after Angular first displays the data-bound properties and sets the directive/component's input properties.
+	-ngDoCheck() - Detect and act upon changes that Angular can't or won't detect on its own. Called during every change detection run.
+	-ngAfterContentInit() - Respond after Angular projects external content into the component's view
+	-ngAfterContentChecked() - Respond after Angular checks the content projected into the directive/component.
+	-ngAfterViewInit() - Respond after Angular initializes the component's views and child views / the view that a directive is in.
+	-ngAfterViewChecked() - Respond after Angular checks the component's views and child views / the view that a directive is i
+	-ngOnDestroy() - Cleanup just before Angular destroys the directive/component. Unsubscribe Observables and detach event handlers to avoid memory leaks.
+
+5. Change detection in Angular:
+   The state of an application can change anytime as a result of a button click or request coming back from a server. 
+   And as the state changes the code needs to detect that and reflect the change in the User Interface.
+   The change detection in Angular framework is unidirectional and top-down.
+   Whenever an async event like a DOM event, timer callback, XHR handler gets triggered, application code normally updates the state(or model) in these callbacks.
+   Angular detects these async events and automatically kicks in the change detection.
+   It checks for the state changes traversing the UI tree starting from the root component and makes the necessary DOM updates to reflect the updated state.
+   There are two main building blocks of change detection in Angular: Component view, Associated bindings
+   Angular supports two types of change detection strategies:
+	-Default
+	-OnPush
+
+   -Default Change Detection:
+	In the default change detection mode, Angular checks for changes for every component in the UI.
+	Even if the components does not change in state, default change detection will run
+	These checks are much faster than digest cycle checks in AngularJS
+	The code is pre-compiled with Ahead of Time(AOT) compilation
+	It will become performance bottleneck in complex Single Page Applications when lot of events are flowing through the system.
+
+   -OnPush Change Detection:
+	With OnPush change detection strategy, Angular will skip the change detection for a component as long as the references to the inputs do not change.
+	To update the state, instead of mutating the objects, application code has to return new references.
+	This approach obviously makes the change detection cycle lot more performant.
+	Introducing immutable state objects will bring its own complexity and challenges.
+
+6. 

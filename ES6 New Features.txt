@@ -1,0 +1,190 @@
+1. Default Parameters in ES6:
+	JS:						ES6:
+	var link = function (height, color, url) {	var link = function(height = 50, color = 'red', url = 'abc') {
+    	var height = height || 50				...
+    	var color = color || 'red'			}
+    	var url = url || 'abc'
+    		...
+	}
+   In ES6, we can put the default values right in the signature of the functions.
+
+
+2. Template Literals in ES6:
+	JS:								ES6:
+	var name = 'Your name is ' + first + ' ' + last + '.'		var name = `Your name is ${first} ${last}.`
+	var url = 'http://localhost:3000/api/messages/' + id		var url = `http://localhost:3000/api/messages/${id}`
+   In ES6 we can use a new syntax ${NAME} inside of the back-ticked string.
+
+
+3. Multi-line Strings in ES6:
+	JS:								ES6:
+	var roadPoem = 'Then took the other, as just as fair,\n\t'	var roadPoem = `Then took the other, as just as fair,
+    	+ 'And having perhaps the better claim\n\t'			And having perhaps the better claim
+    	+ 'Because it was grassy and wanted wear,\n\t'			Because it was grassy and wanted wear
+    	+ 'Though as for that the passing there\n\t'			Though as for that the passing there
+    	+ 'Had worn them really about the same,\n\t'			Had worn them really about the same,`
+
+	var fourAgreements = 'You have the right to be you.\n\		var fourAgreements = `You have the right to be you.
+    	You can only be you when you do your best.'			You can only be you when you do your best.`
+   In ES6, simply utilize the backticks for the same.
+
+4. Destructuring Assignment in ES6:
+	JS:							ES6:
+	var data = $('body').data(), 				var {house, mouse} = $('body').data()
+  	house = data.house,					// we'll get house and mouse variables
+  	mouse = data.mouse
+   It allows us to extract data from array and objects into separate variables.
+
+5. Arrow Functions in ES6:
+	JS:							ES6:
+	var _this = this					$('.btn').click((event) =>{
+	$('.btn').click(function(event){				this.sendData()
+  		_this.sendData()				})
+	})
+   'this' behave properly, i.e., 'this' will have the same value as in the context of the function—it won’t mutate. 
+   The mutation typically happens each time you create a closure.
+
+6. Promises in ES6:
+	JS:							ES6:
+	setTimeout(function(){					var wait1000 =  new Promise(function(resolve, reject) {
+  		console.log('Yay!')					setTimeout(resolve, 1000)
+	}, 1000)						}).then(function() {
+									console.log('Yay!')
+								})
+   
+7. Block-Scoped Constructs Let and Const:
+   In ES6, we use let to restrict the scope to the blocks. Vars are function scoped.
+   When it comes to const, things are easier; it’s just an immutable, and it’s also block-scoped like let.
+
+8. Classes in ES6:
+   Classes creation and usage in ES5 was a pain in the rear, because there wasn’t a keyword class.
+   In Es6 you can create a class using the Class keyword.
+   Eg.
+	class baseModel {
+  		constructor(options = {}, data = []) { // class constructor
+    			this.name = 'Base'
+    			this.url = 'http://azat.co/api'
+    			this.data = data
+    			this.options = options
+  		}
+    		getName() { // class method
+      			console.log(`Class name: ${this.name}`)
+    		}
+	}
+
+9. What is ES6?:
+   Es6 or ECMASCRIPT 2015 is sixth major release of ECMAScript language which comes with a lot of new features 
+   and syntax for writing web applications in Javascript. As currently, not all browsers support ES6, 
+   they support pre-versions of ES6. So to write web applications in ES6 that will support all Browsers we needed tools like Babel and Webpack.
+
+10. What is Babel?:
+    Babel is one of the most popular JavaScript transpilers and becomes the industry standard. 
+    It allows us to write ES6 code and convert it back in pre-Es6 JavaScript that browser supports.
+
+11. What is Webpack?:
+    Webpack allows you to run an environment that hosts babel.
+    It bundles your multiple modules and packs it into a single .js file.
+
+12. Constants in Es6:
+    Constants also are known as immutable variables are a special type of variables whose content is not changed. 
+    In Es6 a constant is defined using const keyword.
+
+13. Template literals in Es6:
+    Template literals are the string with embedded code and variables inside. 
+    Template literal allows concatenation and interpolation in much more comprehensive and clear.
+    Eg.
+	let a="Hello";
+	let b="John";
+	let c=`${a} ${b}`;
+	console.log(c); //outputs Hello John;
+
+14. Spread Operator in ES6:
+    Spread Operator provides a new way to manipulate array and objects in Es6.
+    A Spread operator is represented by "…" followed by the variable name.
+    Eg.
+	let a =[7,8,9];
+	let b=[1,2,3,...a,10];
+	console.log(b); // [1,2,3,7,8,9,10]
+
+    So spread operator spreads the contents of variable a and concatenates it in b.
+
+    Another Example:
+	function print(...z){
+		console.log(z); 
+	}
+	print(1,2,3,4);//[1,2,3,4]
+
+16. Destructuring Assignment in ES6:
+    Destructing assignment in another improvement in Es6. 
+    It allows us to extract data from array and objects into separate variables.
+    Eg.
+	let full_name =['John','Deo'];
+	let [first_name,last_name]=full_name;
+	console.log(first_name,last_name); // outputs John Deo
+
+    Another Example:
+	let c=[100,200,330,400];
+	let [a,...b]=c;
+	console.log(a,b); // outputs 100 [200, 330, 400]
+
+17. What is let and const? And how it differs from var:
+    -Previously, when we declare any variable using var, it was function scoped. 
+    Meaning the variable can be accessed within the function. 
+    This leads to wrap the code in a function whenever we need to create a new scope.
+    -But let and const uses block scoping. 
+    This means the variable declared using these keywords only exist within the innermost block that surronds them.
+    we can not re-declare the same variable with the same scope.
+    -Const is immutable. 
+    It means the value must be given at the time of the declaration and it can not be re-assigned or changes. 
+    Although we can not change the value of the const but we can mutate them.
+    Eg.
+	const a = 0;
+	a = 1; //TypeErrpr: Assignment to constant variable
+	const b = [1,2];
+	b.push(3); //[1,2,3];
+	b[3] = 4; //[1,2,3,4]
+
+18. What is Arrow function? What are all its uses? How it differs from normal function:
+    Arrow functions are a short-hand notation for writing functions in ES6. 
+    The arrow function definition consists of a parameter list ( ... ), followed by the =>marker and a function body. 
+    For single-argument functions, the parentheses may be omitted.
+    Eg.
+	//Classical Function Expression
+	function add(a,b) {
+		return a+b;
+	}
+	//Implementation with Arrow Function
+	const add = (a,b) => {
+		return a+b;
+	}
+    Arrow functions behavior with this keyword varies from that of normal functions. 
+    Each function in JavaScript defines its own "this" context but arrow functions capture the "this" value of the nearest enclosing context.
+    They cannot be used as constructors. 
+    Eg., you can’t use "new" with an arrow function. Hence arrow functions do not have a "protoype" property on them.
+
+19. What is Set?:
+    Set objects are collections of unique values. 
+    Duplicate values are ignored, as the collection must have all unique values. 
+    The values can be primitive types or object references.
+    Also, NaN and undefined can also be stored in a Set. 
+    Eg.
+	var arr = [1,4,2,3,7,5,4,3,9];
+	console.log([...new Set(arr)]); //does not store duplicates -> //[1, 4, 2, 3, 7, 5, 9]
+
+20. What is Generator function?:
+    Generator functions are a new feature in ES6 that allow a function to generate many values over time 
+    by returning an object which can be iterated over to pull values from the function one value at a time.
+    A generator function returns an iterable object when it’s called. 
+    It is written using the new * syntax as well as the new yield keyword introduced in ES6.
+    Each time yield is called, the yielded value becomes the next value in the sequence.
+    Eg.
+	function *infiniteNumbers() {
+		let n = 1;
+		while(true) {
+			yield n++;
+		}
+	}
+	const numbers = infiniteNumbers(); //returns an iterable object
+	numbers.next(); // { value: 1, done: false }
+	numbers.next(); // { value: 2, done: false }
+	numbers.next(); // { value: 3, done: false }

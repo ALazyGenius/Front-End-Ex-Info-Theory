@@ -1,0 +1,335 @@
+1. When adding a number and a string, JavaScript will treat the number as a string.
+		var x = 16 + "Volvo"; ==>> var x = "16" + "Volvo";
+
+2. All JavaScript identifiers are case sensitive.
+
+3.In JavaScript, a variable without a value, has the value undefined. The type is also undefined.
+
+4. In JavaScript null is "nothing". It is supposed to be something that doesn't exist.
+		Unfortunately, in JavaScript, the data type of null is an object.
+
+5. Undefined and null are equal in value but different in type.
+		typeof undefined           // undefined
+		typeof null                // object
+		null === undefined         // false
+		null == undefined          // true
+
+6. Declaring Functions in Javascript:	function myFunction(p1, p2) {...} and var x = function (a, b) {return a * b};
+	After a function expression has been stored in a variable, the variable can be used as a function.
+	var z = x(4, 3);
+	The function above is actually an anonymous function.
+
+7. In a function definition, this refers to the "owner" of the function.
+
+8. Common HTML events:
+		onchange, onclick, onmouseover, onmouseout, onkeydown, onload
+
+9. String Methods and Properties:
+		.length, .indexOf(character), .lastIndexOf(character), .search(character/string), 
+      		.slice(start, end), .substring(start, end),
+		.substr(start, length), .replace(), .toUpperCase(), .toLowerCase(), .concat(), .trim(),
+		.charAt(position), .charCodeAt(position), .Property access [ ], .split()
+
+10. Substring() cannot accept negative indexes.
+
+11. In Substr(), the second parameter specifies the length of the extracted part.
+
+12. If you use NaN in a mathematical operation, the result will also be NaN.
+		var x = NaN; var y = 5; var z = x + y; // z will be NaN
+13. typeof NaN returns number.
+
+13. NaN compared to anything – even itself! – is false
+
+14. Infinity is the value JavaScript will return if you calculate a number outside the largest possible number.
+
+15. typeof Infinity returns number.
+
+16. Number Methods and Properties:
+		.toString(), .toExponential(), .toFixed(), .toPrecision(), .valueOf(), .parseInt(), .parseFloat()
+17. The typeof operator in JavaScript returns "object" for arrays.
+
+18. Array Methods and Properties:
+		.toString(), .join(), .push(), .pop(), .shift(), .unshift(), .concat(), .slice(), .sort(), .reverse() 
+		.splice(position where new elements should be added/deleted, how many elements should be removed from that position, the new elements to be added)
+		.find(), .findIndex()
+
+19. Sorting: points.sort(function(a, b){return a - b});
+
+20. Array Iteration Methods: Array.forEach(), Array.map(), Array.filter(), Array.reduce()
+
+21. The forEach() method calls a function (a callback function) once for each array element.
+
+22. The map() method creates a new array by performing a function on each array element.
+    The map() method does not execute the function for array elements without values.
+    The map() method does not change the original array.
+
+23. The filter() method creates a new array with array elements that passes a test.
+
+24. Get Date Methods: 
+		.getFullYear(), .getMonth(), .getDate(), .getHours(), .getMinutes(), .getSeconds(), .getMilliseconds()
+		.setFullYear(), .setMonth(), .setDate(), .setHours(), .setMinutes(), .setSeconds(), .setMilliseconds()
+
+25. The break statement breaks the loop and continues executing the code after the loop.
+
+26. The continue statement breaks one iteration, if a specified condition occurs, and continues with the next iteration in the loop.
+
+27. The unary + operator can be used to convert a variable to a number:
+		var y = "5";      // y is a string
+		var x = + y;      // x is a number
+
+28. The try statement lets you test a block of code for errors.
+    The catch statement lets you handle the error.
+    The throw statement lets you create custom errors.
+    The finally statement lets you execute code, after try and catch, regardless of the result.
+
+29. If you assign a value to a variable that has not been declared, it will automatically become a GLOBAL variable.
+
+30. The lifetime of a JavaScript variable starts when it is declared.
+    Local variables are deleted when the function is completed.
+    Global variables are deleted when you close the browser window (or tab).
+
+31. Hoisting is JavaScript's default behavior of moving declarations to the top.
+    In JavaScript, a variable can be declared after it has been used.
+    In other words; a variable can be used before it has been declared.
+		x = 5; // Assign 5 to x
+		elem = document.getElementById("demo"); // Find an element 
+		elem.innerHTML = x;                     // Display x in the element
+		var x; // Declare x
+    Hoisting applies to variable declarations and to function declarations.
+    Because of this, JavaScript functions can be called before they are declared.
+		myFunction(5);
+		function myFunction(y) {
+  			return y * y;
+		}
+
+32. Variables and constants declared with let or const are not hoisted.
+
+33. The "use strict" Directive: With strict mode, you can not, for example, use undeclared variables.
+
+34. New features of ES6:
+ 		JavaScript let
+		JavaScript const
+		Exponentiation (**)
+		Default parameter values
+		Array.find()
+		Array.findIndex()
+
+35. Booleans can be objects (if defined with the new keyword) var a = new Boolean() // typeof(a) -> Object
+    Numbers can be objects (if defined with the new keyword) var a = new Number() // typeof(a) -> Object
+    Strings can be objects (if defined with the new keyword) var a = new String() // typeof(a) -> Object
+
+36. Currying is the process of taking a function with multiple arguments 
+    and returning a series of functions that take one argument and 
+    eventually resolve to a value.
+	function volume1(length) {
+  		return function(width) {
+    			return function(height) {
+      				return height * width * length;
+    			}
+  		}
+	}
+	volume1(2)(3)(4); // 24
+
+39. Interceptors allow you to:
+    -Intercept a request by implementing the request function: This method is called before $http sends 
+    	the request to the backend, so you can modify the configurations and make other actions. 
+    	This function receives the request configuration object as a parameter and has to return a 
+    	configuration object or a promise. 
+    -Intercept a response by implementing the response function: This method is called right after $http 
+    	receives the response from the backend, so you can modify the response and make other actions. 
+    	This function receives a response object as a parameter and has to return a response object or a promise.
+    -Intercept request error by implementing the requestError function: Sometimes a request can’t be sent or 
+    	it is rejected by an interceptor. Request error interceptor captures requests that have been canceled by 
+    	a previous request interceptor. It can be used in order to recover the request.
+    -Intercept response error by implementing the responseError function: Sometimes our backend call fails. 
+    	Other times it might be rejected by a request interceptor or by a previous response interceptor. 
+    	In those cases, response error interceptor can help us to recover the backend call.
+
+40. A closure is an inner function that has access to the outer (enclosing) function’s variables—scope chain. 
+    The closure has three scope chains: it has access to its own scope (variables defined between its curly brackets),
+    it has access to the outer function’s variables, and it has access to the global variables.
+    You create a closure by adding a function inside another function.
+    -Closures have access to the outer function’s variable even after the outer function returns.
+    -Closures store references to the outer function’s variables; they do not store the actual value.
+	function showName (firstName, lastName) {?
+		var nameIntro = "Your name is ";
+    		// this inner function has access to the outer function's variables, including the parameter
+		function makeFullName () {?        
+			return nameIntro + firstName + " " + lastName;?    
+		}
+		return makeFullName ();?
+	}?
+	showName ("Michael", "Jackson"); // Your name is Michael Jackson?
+
+41. Call vs bind vs apply:
+    They all attach "this" into function (or object) and the difference is in the function invocation (see below).
+    -call attaches this into function and executes the function immediately:
+	var person = { 
+		name: "James Smith", 
+		hello: function(thing) { 
+			console.log(this.name + " says hello " + thing); 
+		} 
+	} 
+	person.hello("world"); // output: "James Smith says hello world" 
+	person.hello.call({ name: "Jim Smith" }, "world"); // output: "Jim Smith says hello world"
+
+    -bind attaches this into function and it needs to be invoked separately like this:
+	var person = { 
+		name: "James Smith", 
+		hello: function(thing) { 
+			console.log(this.name + " says hello " + thing); 
+		} 
+	} 
+	person.hello("world"); // output: "James Smith says hello world" 
+	var helloFunc = person.hello.bind({ name: "Jim Smith" }); 
+	helloFunc("world"); // output: Jim Smith says hello world"
+    or like this:
+	... var helloFunc = person.hello.bind({ name: "Jim Smith" }, "world"); helloFunc(); // output: Jim Smith says hello world"
+
+    -apply is similar to call except that it takes an array-like object instead of 
+     listing the arguments out one at a time:
+	function personContainer() { 
+		var person = { 
+			name: "James Smith", 
+			hello: function() { 
+				console.log(this.name + " says hello " + arguments[1]); 
+			} 
+		} 
+	person.hello.apply(person, arguments); 
+	} 
+	personContainer("world", "mars"); /
+
+42. Global variables can be made local (private) with closures.
+    A closure is a function having access to the parent scope, even after the parent function has closed.
+		var add = (function () {
+  			var counter = 0;
+  				return function () {counter += 1; return counter}
+			})();
+		add();
+		add();
+		add();
+		// the counter is now 3
+
+43. When a web page is loaded, the browser creates a Document Object Model of the page.
+    The HTML DOM model is constructed as a tree of Objects.
+    The document object represents your web page.
+    If you want to access any element in an HTML page, you always start with accessing the document object.
+
+44. HTML DOM Methods:
+		.getElementById("id"), .getElementsByTagName(name), .getElementsByClassName(name),
+		.querySelectorAll(), .querySelector()
+		.createElement(element) = Create an HTML element
+		.appendChild(element) = Add an HTML element
+		.removeChild(element) = Remove an HTML element
+		.replaceChild(element) = Replace an HTML element
+		.write(text) = Write into the HTML output stream
+		e.innerHTML = new html content	Change the inner HTML of an element
+		e.attribute = new value	Change the attribute value of an HTML element
+		e.setAttribute(attribute, value) = Change the attribute value of an HTML element
+		e.style.property = Change the style of an HTML element
+
+45. Synchronous XMLHttpRequest (async = false) is not recommended because the JavaScript will stop executing until
+    the server response is ready. If the server is busy or slow, the application will hang or stop.
+
+46. readyState	Holds the status of the XMLHttpRequest.
+		0: request not initialized 
+		1: server connection established
+		2: request received 
+		3: processing request 
+		4: request finished and response is ready
+47. Get Call:
+		var xhttp = new XMLHttpRequest();
+  		xhttp.onreadystatechange = function() {
+    			if (this.readyState == 4 && this.status == 200) {
+      				document.getElementById("demo").innerHTML = this.responseText;
+    			}
+  		};
+  		xhttp.open("GET", "demo_get2.asp?fname=Henry&lname=Ford", true);
+  		xhttp.send();
+
+48. Post Call:
+		var xhttp = new XMLHttpRequest();
+  		xhttp.onreadystatechange = function() {
+    			if (this.readyState == 4 && this.status == 200) {
+      				document.getElementById("demo").innerHTML = this.responseText;
+    			}
+  		};
+  		xhttp.open("POST", "demo_post2.asp", true);
+  		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  		xhttp.send("fname=Henry&lname=Ford");
+
+49. Parse the data with JSON.parse(), and the data becomes a JavaScript object.
+    When receiving data from a web server, the data is always a string.
+
+50. When sending data to a web server, the data has to be a string.
+    Convert a JavaScript object into a string with JSON.stringify().
+
+51. One of the drawbacks of creating true private methods in JavaScript is that 
+    they are very memory-inefficient, as a new copy of the method would be created for each instance.
+
+52. What is the significance of including 'use strict' at the beginning of a JavaScript source file?
+    The short and most important answer here is that use strict is a way to 
+    voluntarily enforce stricter parsing and error handling on your JavaScript code at runtime. 
+    Code errors that would otherwise have been ignored or would have failed silently will now 
+    generate errors or throw exceptions. In general, it is a good practice.
+	-Makes debugging easier
+	-Prevents accidental globals
+	-Eliminates this coercion
+	-Disallows duplicate parameter values - (e.g., function foo(val1, val2, val1){})
+	-Throws error on invalid usage of delete
+
+53. There are 6 types of values in ‘Error Name’ Property.
+	-Range Error		We will get this error if we use a number outside the range
+	-Syntax Error		This error raises when we use the incorrect syntax
+	-Reference Error	This error is thrown if used an undeclared variable
+	-Eval Error		Thrown due to the error in eval(). New JavaScript version doesn’t have this error 
+	-Type Error		Value is outside the range of types used.
+	-URI Error		Due to the usage of illegal characters.
+
+54. What are Self Invoking Functions?
+    They are also known as ‘Immediately Invoked Function Expressions’ or ‘Self Executing Anonymous Functions’. 
+    These functions are invoked automatically in the code, hence they are named as ‘Self Invoking Functions’.
+	(function () {
+		return () 
+	} () ;
+
+55. Debouncing:
+	const debounce = (func, delay) => {
+	  let inDebounce;
+	  return function() {
+	    const context = this;
+	    const args = arguments;
+	    clearTimeout(inDebounce);
+	    inDebounce = setTimeout(() => func.apply(context, args), delay);
+	  }
+	}
+	debounceBtn.addEventListener('click', debounce(function() {
+	  console.info('Hey! It is', new Date().toUTCString());
+	}, 3000));
+
+	We are passing a function(func) and a delay(delay) into the debounce function. 
+	inDebounce is a variable that we use to track the delay period.
+	If we are invoking for the first time, our function will execute at the end of our delay. 
+	If we invoke and then invoke again before the end of our delay, the delay restarts.
+
+56. Throttling:
+	const throttle = (func, limit) => {
+	  let inThrottle;
+	  return function() {
+	    const args = arguments;
+	    const context = this;
+	    if (!inThrottle) {
+	      func.apply(context, args);
+	      inThrottle = true;
+	      setTimeout(() => inThrottle = false, limit);
+	    }
+	  }
+	}
+	throttleBtn.addEventListener('click', throttle(function() {
+	  return console.log('Hey! It is', new Date().toUTCString());
+	}, 1000));
+
+	The first call to our function will execute and sets the limit period inThrottle. 
+	We can call our function during this period but it will not fire until the throttle period has passed. 
+	Once it has passed, the next invocation will fire and the process repeats.
+

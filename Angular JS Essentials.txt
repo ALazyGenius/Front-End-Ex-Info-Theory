@@ -1,0 +1,91 @@
+1. AngularJS is a JavaScript framework. 
+
+2. It can be added to an HTML page with a <script> tag.
+
+3. AngularJS extends HTML with ng-directives:
+	The ng-app directive defines an AngularJS application. (<body ng-app="">)
+	  -If you remove the ng-app directive, HTML will display the expression as it is, without solving it
+	  -The ng-app directive also tells AngularJS that the <body> element is the "owner" of the AngularJS application.
+	  -The ng-app directive will auto-bootstrap (automatically initialize) the application when a web page is loaded.
+	The ng-model directive binds the value of HTML controls (input, select, textarea) to application data. (<input type="text" ng-model="name">)
+	  -You can bind the value of an input field to a variable created in AngularJS.
+	  -The binding goes both ways. If the user changes the value inside the input field, the AngularJS property will also change its value.
+	  -Provide type validation for application data (number, email, required).
+	  -Provide status for application data (invalid, dirty, touched, error).
+	  -Provide CSS classes for HTML elements.
+	  -Bind HTML elements to HTML forms.
+	The ng-bind directive binds application data to the HTML view. (<p ng-bind="name"></p>)
+	The ng-init directive initializes AngularJS application variables. (<div ng-init="firstName='John'">)
+	The ng-repeat directive repeats an HTML element. (<ul><li ng-repeat="x in names"> {{ x }} </li></ul>)
+	  -The ng-repeat directive used on an array of objects
+
+4. You can use data-ng-, instead of ng-, if you want to make your page HTML valid.
+
+5. AngularJS expressions are written inside double braces: {{ expression }}.
+	<p>My first expression: {{ 5 + 5 }}</p> //My first expression:10
+
+6. AngularJS expressions bind AngularJS data to HTML the same way as the ng-bind directive. 
+   AngularJS expressions can be written inside double braces: {{ expression }}.
+   AngularJS expressions can also be written inside a directive: ng-bind="expression".
+   AngularJS expressions are much like JavaScript expressions.
+
+7. AngularJS modules define AngularJS applications.
+   AngularJS controllers control AngularJS applications.
+   The ng-app directive defines the application, the ng-controller directive defines the controller.
+   Eg.
+	<body ng-app="myApp">
+		<div ng-controller="myCtrl">
+			First Name: <input type="text" ng-model="firstName"><br>
+			Last Name: <input type="text" ng-model="lastName"><br>
+			<br>
+			Full Name: {{firstName + " " + lastName}}
+		</div>
+		<script>
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl', function($scope) {
+  			$scope.firstName= "John";
+  			$scope.lastName= "Doe";
+		});
+		</script>
+	</body>
+
+8. An AngularJS module defines an application.
+   The module is a container for the different parts of an application.
+   The module is a container for the application controllers.
+   Controllers always belong to a module.
+
+9. A module is created by using the AngularJS function angular.module:
+	-var app = angular.module("myApp", []); //The "myApp" parameter refers to an HTML element in which the application will run.
+   The [] parameter in the module definition can be used to define dependent modules.
+   Without the [] parameter, you are not creating a new module, but retrieving an existing one.
+
+10. Add a controller to your application, and refer to the controller with the ng-controller directive:
+	-app.controller("myCtrl", function($scope) {
+	  $scope.firstName = "John";
+	  $scope.lastName = "Doe";
+	});
+
+11. AngularJS has a set of built-in directives which you can use to add functionality to your application.
+    AngularJS lets you extend HTML with new attributes called Directives.
+    New directives are created by using the .directive function.
+    To invoke the new directive, make an HTML element with the same tag name as the new directive.
+    When naming a directive, you must use a camel case name, "w3TestDirective", 
+    When invoking it, you must use '-' separated name, "w3-test-directive"
+    In addition you can use the module to add your own directives to your applications:
+	-app.directive("w3TestDirective", function() {
+	  return {
+	    restrict: "A", //(E for Element name, A for Attribute, C for Class, M for Comment)
+	    template : "I was made in a directive constructor!"
+	  };
+	});
+    You can invoke a directive by using:
+	Element name - <w3-test-directive></w3-test-directive>
+	Attribute - <div w3-test-directive></div>
+	Class - <div class="w3-test-directive"></div>
+	Comment - <!-- directive: w3-test-directive -->
+    The examples below will all produce the same result
+    You can restrict your directives to only be invoked by some of the methods.
+    By adding a restrict property with the value "A", the directive can only be invoked by attributes
+
+12. Data binding in AngularJS is the synchronization between the model and the view.
+    AngularJS applications usually have a data model. The data model is a collection of data available for the application.
